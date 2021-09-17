@@ -9,6 +9,12 @@ class LabController < ApplicationController
         Lab.find(params[:id]).to_json
     end
 
+
+  # TO DO: create end point to fetch labs where both students have not yet completed the lab
+
+  #  implement SQL below: -- gets all labs that student a and student b have not completed
+  # #   select * from students s  inner join labs l on s.id=l.student_id where s.user_name in ("mkenton", "jthomassen") and l.completed="No";
+
     get "/labs/:studentA/:studentB" do 
         @labs = Lab.all
         @studentA = Student.findBy(user_name: params[":studentA"])
